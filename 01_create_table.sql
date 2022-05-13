@@ -57,12 +57,12 @@ CREATE TABLE IF NOT EXISTS `boot_shop`.`products` (
   `name` VARCHAR(45) NOT NULL,
   `description` TEXT NULL,
   `price` FLOAT NULL,
-  `categories_id` INT NOT NULL,
+  `category_id` INT NOT NULL,
   `active` TINYINT NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
-  INDEX `fk_products_categories_idx` (`categories_id` ASC) VISIBLE,
-  CONSTRAINT `fk_products_categories`
-    FOREIGN KEY (`categories_id`)
+  INDEX `fk_products_category_idx` (`category_id` ASC) VISIBLE,
+  CONSTRAINT `fk_products_category`
+    FOREIGN KEY (`category_id`)
     REFERENCES `boot_shop`.`categories` (`id`)
     ON DELETE RESTRICT
     ON UPDATE CASCADE)
