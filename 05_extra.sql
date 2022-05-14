@@ -66,6 +66,7 @@ INSERT INTO reviews (user_id, product_id, content, stars)
 -- 3.3.2 ACTUALIZAR DATOS
 -- Cambia el contenido de una review
 UPDATE reviews SET content = 'Me gustó mucho' WHERE user_id = 1 AND product_id = 1;
+-- El censor ha revisado las reviews y las hace públicas:
 UPDATE reviews SET active = TRUE;
 
 -- 3.3.3 OBTENER DATOS
@@ -109,5 +110,11 @@ SELECT u.id, u.name, o.id AS order_id, o.date, o.status, d.product_id, p.author,
 
 -- 3.3.4 BORRAR DATOS
 -- ⦁ Elimina una review por su id.
--- En mi BD las reviwes no tienen id, como PK se usa (user_id,product_id)
+-- En mi BD las opiniones (reviews) no tienen id, como PK se usa (user_id,product_id)
 DELETE FROM reviews WHERE user_id=1 AND product_id=2;
+
+-- Tampoco me cuesta nada añadir una id
+ALTER TABLE reviews
+	ADD id INT AUTO_INCREMENT UNIQUE;
+-- Y usarla para borrar una review:
+DELETE FROM reviews WHERE id=3;
