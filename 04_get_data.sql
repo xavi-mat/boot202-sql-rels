@@ -21,13 +21,15 @@ SELECT p.id, p.author, p.title, p.price, c.name AS category
 
 -- Seleccione todos los usuarios y muestre sus pedidos.
 -- Versión con el total, sin el detalle del pedido
-SELECT u.id, u.name, o.id AS order_id, o.date, o.status, SUM(d.quantity) AS num_items, ROUND(SUM(d.price*d.quantity), 2) AS total
+SELECT u.id, u.name, o.id AS order_id, o.date, o.status,
+        SUM(d.quantity) AS num_items, ROUND(SUM(d.price*d.quantity), 2) AS total
     FROM users u
     LEFT JOIN orders o ON o.user_id = u.id
     LEFT JOIN details d ON d.order_id=o.id
     GROUP BY u.id;
 -- Versión con el detalle del pedido
-SELECT u.id, u.name, o.id AS order_id, o.date, o.status, d.product_id, p.author, p.title, d.quantity, p.price, ROUND((d.quantity * p.price), 2) AS subtotal
+SELECT u.id, u.name, o.id AS order_id, o.date, o.status, d.product_id, p.author,
+        p.title, d.quantity, p.price, ROUND((d.quantity * p.price), 2) AS subtotal
     FROM users u
     LEFT JOIN orders o ON o.user_id = u.id
     LEFT JOIN details d ON d.order_id=o.id
@@ -42,13 +44,15 @@ SELECT p.author, p.title, c.name AS category
 
 -- Seleccione a un usuario por su id y muestre los pedidos que tiene.
 -- Versión con el total, sin el detalle del pedido
-SELECT u.id, u.name, o.id AS order_id, o.date, o.status, SUM(d.quantity) AS num_items, ROUND(SUM(d.price*d.quantity), 2) AS total
+SELECT u.id, u.name, o.id AS order_id, o.date, o.status,
+        SUM(d.quantity) AS num_items, ROUND(SUM(d.price*d.quantity), 2) AS total
     FROM users u
     JOIN orders o ON o.user_id = u.id
     JOIN details d ON d.order_id=o.id
     WHERE u.id=3;
 -- Versión con el detalle del pedido
-SELECT u.id, u.name, o.id AS order_id, o.date, o.status, d.product_id, p.author, p.title, d.quantity, p.price, ROUND((d.quantity * p.price), 2) AS subtotal
+SELECT u.id, u.name, o.id AS order_id, o.date, o.status, d.product_id, p.author,
+        p.title, d.quantity, p.price, ROUND((d.quantity * p.price), 2) AS subtotal
     FROM users u
     JOIN orders o ON o.user_id = u.id
     JOIN details d ON d.order_id=o.id
