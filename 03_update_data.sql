@@ -16,4 +16,4 @@ UPDATE products SET title = 'De la Tierra a la Luna' WHERE id = 1;
 UPDATE products SET price = 50 WHERE id = 2;
 UPDATE details JOIN orders ON details.order_id = orders.id
     SET price = 50
-    WHERE product_id = 2 AND orders.closed = 0;
+    WHERE product_id = 2 AND orders.status = 'open';

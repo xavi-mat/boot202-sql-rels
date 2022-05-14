@@ -86,8 +86,7 @@ CREATE TABLE IF NOT EXISTS `boot_shop`.`orders` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `user_id` INT NOT NULL,
   `date` DATE NULL,
-  `closed` TINYINT NULL DEFAULT 0,
-  `sent` TINYINT NULL DEFAULT 0,
+  `status` ENUM('open', 'paid', 'sent', 'cancelled') DEFAULT 'open',
   PRIMARY KEY (`id`),
   INDEX `fk_orders_users1_idx` (`user_id` ASC) VISIBLE,
   CONSTRAINT `fk_orders_users1`
