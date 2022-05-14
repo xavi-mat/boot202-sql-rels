@@ -99,11 +99,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `boot_shop`.`detail`
+-- Table `boot_shop`.`details`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `boot_shop`.`detail` ;
+DROP TABLE IF EXISTS `boot_shop`.`details` ;
 
-CREATE TABLE IF NOT EXISTS `boot_shop`.`detail` (
+CREATE TABLE IF NOT EXISTS `boot_shop`.`details` (
   `order_id` INT NOT NULL,
   `product_id` INT NOT NULL,
   `quantity` INT NOT NULL,

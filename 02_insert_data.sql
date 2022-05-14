@@ -55,7 +55,7 @@ INSERT INTO orders (user_id, date) VALUES
     (8, '2020-01-08'),
     (9, '2020-01-09');
 
-INSERT INTO detail (order_id, product_id, quantity, price) VALUES
+INSERT INTO details (order_id, product_id, quantity, price) VALUES
     (1, 1, 1, 15.40),
     (1, 2, 2, 19.99),
     (1, 3, 1, 15.15),
