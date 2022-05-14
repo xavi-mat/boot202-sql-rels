@@ -54,8 +54,9 @@ DROP TABLE IF EXISTS `boot_shop`.`products` ;
 
 CREATE TABLE IF NOT EXISTS `boot_shop`.`products` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(45) NOT NULL,
-  `description` TEXT NULL,
+  `author` VARCHAR(45) NOT NULL,
+  `title` VARCHAR(100) NOT NULL,
+  `year` YEAR NULL,
   `price` FLOAT NULL,
   `category_id` INT NOT NULL,
   `active` TINYINT NOT NULL DEFAULT 0,
@@ -76,14 +77,14 @@ DROP TABLE IF EXISTS `boot_shop`.`orders` ;
 
 CREATE TABLE IF NOT EXISTS `boot_shop`.`orders` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `users_id` INT NOT NULL,
+  `user_id` INT NOT NULL,
   `date` DATE NULL,
   `closed` TINYINT NULL DEFAULT 0,
   `sent` TINYINT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
-  INDEX `fk_orders_users1_idx` (`users_id` ASC) VISIBLE,
+  INDEX `fk_orders_users1_idx` (`user_id` ASC) VISIBLE,
   CONSTRAINT `fk_orders_users1`
-    FOREIGN KEY (`users_id`)
+    FOREIGN KEY (`user_id`)
     REFERENCES `boot_shop`.`users` (`id`)
     ON DELETE RESTRICT
     ON UPDATE CASCADE)
@@ -96,20 +97,20 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `boot_shop`.`detail` ;
 
 CREATE TABLE IF NOT EXISTS `boot_shop`.`detail` (
-  `orders_id` INT NOT NULL,
-  `products_id` INT NOT NULL,
+  `order_id` INT NOT NULL,
+  `product_id` INT NOT NULL,
   `quantity` INT NOT NULL,
   `price` FLOAT NOT NULL,
-  PRIMARY KEY (`orders_id`, `products_id`),
-  INDEX `fk_orders_has_products_products1_idx` (`products_id` ASC) VISIBLE,
-  INDEX `fk_orders_has_products_orders1_idx` (`orders_id` ASC) VISIBLE,
+  PRIMARY KEY (`order_id`, `product_id`),
+  INDEX `fk_orders_has_products_products1_idx` (`product_id` ASC) VISIBLE,
+  INDEX `fk_orders_has_products_orders1_idx` (`order_id` ASC) VISIBLE,
   CONSTRAINT `fk_orders_has_products_orders1`
-    FOREIGN KEY (`orders_id`)
+    FOREIGN KEY (`order_id`)
     REFERENCES `boot_shop`.`orders` (`id`)
     ON DELETE RESTRICT
     ON UPDATE CASCADE,
   CONSTRAINT `fk_orders_has_products_products1`
-    FOREIGN KEY (`products_id`)
+    FOREIGN KEY (`product_id`)
     REFERENCES `boot_shop`.`products` (`id`)
     ON DELETE RESTRICT
     ON UPDATE CASCADE)
