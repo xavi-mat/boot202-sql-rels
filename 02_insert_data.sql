@@ -36,7 +36,7 @@ INSERT INTO categories (name) VALUES
 
 -- Inserte al menos 5 nuevos productos.
 INSERT INTO products (author, title, year, price, category_id) VALUES
-    ('Julio Verne', 'De la Tierra a la Luna', 2010, 15.40, 8),
+    ('Julio Verne', 'DE la tierra a la una', 2010, 15.40, 8),
     ('J.K. Rowling', 'Harry Potter y la piedra filosofal', 1997, 19.99, 11),
     ('Carmen Laforet', 'Nada', 1960, 15.15, 6),
     ('Stephen King', 'El cementerio de animales', 1990, 15.00, 3),
