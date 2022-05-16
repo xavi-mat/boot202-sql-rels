@@ -1,5 +1,5 @@
 -- -----------------------------------------------------------------------------
--- Exercise Database
+-- Relational Database - Exercise
 -- for The Bridge
 -- by xavimat
 -- 2022-05-13

@@ -65,7 +65,7 @@ INSERT INTO reviews (user_id, product_id, content, stars)
 
 -- 3.3.2 ACTUALIZAR DATOS
 -- Cambia el contenido de una review
-UPDATE reviews SET content = 'Me gustó mucho' WHERE user_id = 1 AND product_id = 1;
+UPDATE reviews SET content = 'Me gustó mucho' WHERE user_id = 2 AND product_id = 3;
 -- El censor ha revisado las reviews y las hace públicas:
 UPDATE reviews SET active = TRUE;
 
@@ -78,20 +78,20 @@ SELECT p.id, p.author, p.title, r.content, r.stars
 	FROM products p
 	LEFT JOIN reviews r ON p.id=r.product_id;
 
--- Muestre un producto con sus reviews.
-SELECT p.id, p.author, p.title, r.content, r.stars
-	FROM products p
-	LEFT JOIN reviews r ON p.id=r.product_id
-    WHERE p.iD=2;
-
 -- Otro ejemplo: mostrar la media de valoraciones (stars)
 SELECT p.id, p.author, p.title, AVG(r.stars) AS rating, COUNT(r.product_id) AS num_reviews
 	FROM products p
 	LEFT JOIN reviews r ON p.id=r.product_id
     GROUP BY p.id;
 
+-- Muestre un producto con sus reviews.
+SELECT p.id, p.author, p.title, r.content, r.stars
+	FROM products p
+	LEFT JOIN reviews r ON p.id=r.product_id
+    WHERE p.iD=2;
+
 -- Muestre los productos junto a la categoría a la que pertenece y sus reviews.
-SELECT p.id, p.author, p.title, c.name, r.content, r.stars
+SELECT p.id, p.author, p.title, c.name AS category, r.content, r.stars
     FROM products p
     LEFT JOIN reviews r ON p.id=r.product_id
     LEFT JOIN categories c ON p.category_id=c.id;
