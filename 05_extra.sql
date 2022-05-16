@@ -97,7 +97,6 @@ SELECT p.id, p.author, p.title, c.name AS category, r.content, r.stars
     LEFT JOIN categories c ON p.category_id=c.id;
 
 -- Seleccione un usuario y muestre sus pedidos junto a los productos que contiene cada pedido.
--- (Yo creía que eso se pedía en el apartado 2)
 SELECT u.id, u.name, o.id AS order_id, o.date, o.status, d.product_id, p.author,
         p.title, d.quantity, p.price, ROUND((d.quantity * p.price), 2) AS subtotal
     FROM users u
@@ -113,7 +112,7 @@ SELECT u.id, u.name, o.id AS order_id, o.date, o.status, d.product_id, p.author,
 -- En mi BD las opiniones (reviews) no tienen id, como PK se usa (user_id,product_id)
 DELETE FROM reviews WHERE user_id=1 AND product_id=2;
 
--- Tampoco me cuesta nada añadir una id
+-- Es fácil añadir una id
 ALTER TABLE reviews
 	ADD id INT AUTO_INCREMENT UNIQUE;
 -- Y usarla para borrar una review:
